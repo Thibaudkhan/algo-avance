@@ -1,21 +1,19 @@
 <?php
 
-
-$n = 0;
+$n = 10;
 
 
 function fibo($n){
 
-	$u = 0;
-	$u1 = 1;
+    $u0 = 0;
+    $u1 = 1;
 
-	while ($n < 28) {
-		$result = $u + $u1 ;
-		$u = $u1;
-		$u1 = $result;
-		$n++;	
-	}
-	echo $result."\n";
+    for ($i = 2; $i <= $n; $i ++) {
+        $result = $u0 + $u1;
+        $u0 = $u1;
+        $u1 = $result;
+    }
+    echo $result . PHP_EOL;
 }
 
 fibo($n);
