@@ -1,8 +1,6 @@
 <?php
 
-
 $n = 0;
-
 
 function fibo($n){
 
