@@ -3,7 +3,7 @@
 function randomArray(int $nbInt):array{
     $arrayInt = array();
     for ($i = 0; $i < $nbInt; $i++){
-        $tempInt = random_int(0, PHP_INT_MAX);
+        $tempInt = random_int(0, 10);
         if(!in_array($tempInt, $arrayInt)){
             array_push($arrayInt, $tempInt);
         }
@@ -53,6 +53,26 @@ function bubbleSortAd($arrayInt):array{
 }
 
 function insertionSort($arrayInt):array{
+    $start = microtime(true);
+    for ($i=0; $i < count($arrayInt) - 1; $i++) { 
+        $isMod = false;
+        $valueToInsert = $arrayInt[$i +1];
+        $j = $i;
+        while ($valueToInsert < $arrayInt[$j] && $j >= 0) {
+            $arrayInt[$j +1] = $arrayInt[$j];
+
+            $j--;
+            $isMod = true;
+        }
+        if($isMod == true){
+            $arrayInt[$j+1] = $valueToInsert;            
+        }
+    }
+    $end = microtime(true);
+    echo "\n Le temps ". round(($end - $start)* 1000 )." ms \n";
+    return $arrayInt;
+}
+
 function classicSort($arrayInt):array{
     $start = microtime(true);
     sort($arrayInt);
@@ -61,12 +81,26 @@ function classicSort($arrayInt):array{
     return $arrayInt;
 }
 
+function exchangeSort($arrayInt):array{
+    $start = microtime(true);
+    for ($i=0; $i < count($arrayInt)-1; $i++) { 
+       for ($j=$i; $j < count($arrayInt); $j++) { 
+           if($arrayInt[$i] > $arrayInt[$j]){
+                $temp = $arrayInt[$i];
+                $arrayInt[$i] = $arrayInt[$j];
+                $arrayInt[$j] = $temp;
+           }
+       }
+    }
+    $end = microtime(true);
+    echo "\n Me temps ". round(($end - $start) * 1000)."ms \n";
+    return $arrayInt;
 }
 
 
-$arrayOriginal = randomArray(10004);
-classicSort($arrayOriginal);
-bubbleSort($arrayOriginal);
-bubbleSortAd($arrayOriginal);
-
+$arrayOriginal = randomArray(10);
+//classicSort($arrayOriginal);
+//bubbleSort($arrayOriginal);
+//bubbleSortAd($arrayOriginal);
+print_r(exchangeSort($arrayOriginal));
 ?>
