@@ -33,6 +33,7 @@ function bubbleSort($arrayInt):array{
 }
 
 function bubbleSortAd($arrayInt):array{
+    $start = microtime(true);
     $arrayLength = count($arrayInt);
     do {
         $nbChange = 0;
@@ -46,15 +47,22 @@ function bubbleSortAd($arrayInt):array{
         }
         $arrayLength -= 1;
     } while ($nbChange != 0);
+    $end = microtime(true);
+    echo "\n Le temps ". round(($end - $start)* 1000 )." ms \n";
     return $arrayInt;
 }
 
+function classicSort($arrayInt):array{
+    $start = microtime(true);
+    sort($arrayInt);
+    $end = microtime(true);
+    echo "\n Le temps ". round(($end - $start)* 1000 )." ms \n";
+    return $arrayInt;
+}
 
 $arrayOriginal = randomArray(10004);
-// $arrayCopy = $arrayOriginal;
-// sort($arrayCopy);
-//print_r($arrayOriginal);
-//print_r(bubbleSort($arrayOriginal));
+classicSort($arrayOriginal);
 bubbleSort($arrayOriginal);
+bubbleSortAd($arrayOriginal);
 
 ?>
