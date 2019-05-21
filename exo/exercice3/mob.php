@@ -53,15 +53,20 @@ function bubbleSortAd($arrayInt):array{
 }
 
 function insertionSort($arrayInt):array{
+function classicSort($arrayInt):array{
+    $start = microtime(true);
+    sort($arrayInt);
+    $end = microtime(true);
+    echo "\n Le temps ". round(($end - $start)* 1000 )." ms \n";
+    return $arrayInt;
+}
 
 }
 
 
 $arrayOriginal = randomArray(10004);
-// $arrayCopy = $arrayOriginal;
-// sort($arrayCopy);
-//print_r($arrayOriginal);
-//print_r(bubbleSort($arrayOriginal));
+classicSort($arrayOriginal);
 bubbleSort($arrayOriginal);
+bubbleSortAd($arrayOriginal);
 
 ?>
