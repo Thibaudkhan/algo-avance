@@ -1,6 +1,5 @@
 <?php
 
-
 function fibonacci (int $nbIteration){
     $nMinusOne = 0;
     $n = 1;
