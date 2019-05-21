@@ -15,6 +15,7 @@ function randomArray(int $nbInt):array{
 }
 
 function bubbleSort($arrayInt):array{
+    $start = microtime(true);
     do {
         $nbChange = 0;
         for ($i = 0; $i < count($arrayInt) - 1; $i++) {
@@ -26,6 +27,8 @@ function bubbleSort($arrayInt):array{
             }
         }
     } while ($nbChange != 0);
+    $end = microtime(true);
+    echo "\n Le temps ". round(($end - $start)* 1000 )." ms \n";
     return $arrayInt;
 }
 
@@ -46,10 +49,12 @@ function bubbleSortAd($arrayInt):array{
     return $arrayInt;
 }
 
-$arrayOriginal = randomArray(10);
+
+$arrayOriginal = randomArray(10004);
 // $arrayCopy = $arrayOriginal;
 // sort($arrayCopy);
-print_r($arrayOriginal);
-print_r(bubbleSortAd($arrayOriginal));
+//print_r($arrayOriginal);
+//print_r(bubbleSort($arrayOriginal));
+bubbleSort($arrayOriginal);
 
 ?>
