@@ -12,6 +12,7 @@ function FibonacciRec(int $u){
 }
 
 function FibonacciIte(int $u){
+	
 	$nMinus = 0;
 	$n = 1;
 	$temp;
