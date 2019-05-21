@@ -28,11 +28,12 @@ function bubbleSort($arrayInt):array{
         }
     } while ($nbChange != 0);
     $end = microtime(true);
-    echo "\n Le temps ". round(($end - $start)* 1000 )." ms \n";
+    echo "\n Le temps bubble  ". round(($end - $start)* 1000 )." ms \n";
     return $arrayInt;
 }
 
 function bubbleSortAd($arrayInt):array{
+    $start = microtime(true);
     $arrayLength = count($arrayInt);
     do {
         $nbChange = 0;
@@ -46,7 +47,13 @@ function bubbleSortAd($arrayInt):array{
         }
         $arrayLength -= 1;
     } while ($nbChange != 0);
+    $end = microtime(true);
+    echo "\n Le temps bubble ad ". round(($end - $start)* 1000 )." ms \n";
     return $arrayInt;
+}
+
+function insertionSort($arrayInt):array{
+
 }
 
 
