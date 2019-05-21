@@ -3,7 +3,7 @@
 function randomArray(int $nbInt):array{
     $arrayInt = array();
     for ($i = 0; $i < $nbInt; $i++){
-        $tempInt = random_int(0, 10);
+        $tempInt = random_int(0, PHP_INT_MAX);
         //PHP_INT_MAX
         if(!in_array($tempInt, $arrayInt)){
             array_push($arrayInt, $tempInt);
@@ -36,7 +36,7 @@ function exchangeSort($arrayInt):array{
         }
     }
     $end = microtime(true);
-    echo "\n Le temps ". round(($end - $start)* 1000 )." ms \n";
+    echo "\n Le temps échange ". round(($end - $start)* 1000 )." ms \n";
     return $arrayInt;
 }
 
@@ -82,8 +82,8 @@ function insertionSort($arrayInt):array{
     $start = microtime(true);
     $arrayLength = count($arrayInt);
     for ($i=0; $i < $arrayLength - 1; $i++) { 
-        $j = $i;
-        $tempo = $arrayInt[$j + 1];
+        $j = $i - 1;
+        $tempo = $arrayInt[$i];
         while($tempo < $arrayInt[$j] && $j >= 0){
             $arrayInt[$j+1] = $arrayInt[$j];
             $j--;
@@ -95,17 +95,17 @@ function insertionSort($arrayInt):array{
     return $arrayInt;
 }
 
-$arrayOriginal = randomArray(10);
-print_r($arrayOriginal);
+$arrayOriginal = randomArray(10000);
+//print_r($arrayOriginal);
 //print_r(classicSort($arrayOriginal));
-print_r(exchangeSort($arrayOriginal));
+//print_r(exchangeSort($arrayOriginal));
 //print_r(bubbleSort($arrayOriginal));
 //print_r(bubbleSortAd($arrayOriginal));
 //print_r(insertionSort($arrayOriginal));
-/*classicSort($arrayOriginal);
+classicSort($arrayOriginal);
 exchangeSort($arrayOriginal);
 bubbleSort($arrayOriginal);
 bubbleSortAd($arrayOriginal);
-insertionSort($arrayOriginal);*/
+insertionSort($arrayOriginal);
 
 ?>
