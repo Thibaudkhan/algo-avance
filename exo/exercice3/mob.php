@@ -53,6 +53,39 @@ function bubbleSortAd($arrayInt):array{
 }
 
 function insertionSort($arrayInt):array{
+    for ($i= 1; $i < count($arrayInt) ; $i++) { 
+        $j = $i;
+        $move = $arrayInt[$i];
+        while ($j > 0 && $move < $arrayInt[$j - 1]) {
+            $j--;
+            $arrayInt[$j+1] = $arrayInt[$j];
+        }
+        $arrayInt[$j] = $move;        
+    }
+        return $arrayInt;
+}
+
+
+
+    /*$arrayLength = 0;
+    $bouger;
+    for ($i = $arrayLength; $i < count($arrayInt) ; $i++) { 
+        $i = $j -1 ;
+        while ($arrayInt[$j] < $bouger ) {
+            if ($bouger > $arrayInt[$j]) {
+                # code...
+            }
+            $bouger = $arrayInt[$i];
+            $arrayInt[$i] = $arrayInt[$j];
+            $arrayInt[$j] = $bouger;
+            $j--;
+        }
+    }
+    $arrayLength++; 
+    return $arrayInt;
+}*/
+
+
 function classicSort($arrayInt):array{
     $start = microtime(true);
     sort($arrayInt);
@@ -61,12 +94,13 @@ function classicSort($arrayInt):array{
     return $arrayInt;
 }
 
-}
 
 
-$arrayOriginal = randomArray(10004);
-classicSort($arrayOriginal);
-bubbleSort($arrayOriginal);
-bubbleSortAd($arrayOriginal);
+
+$arrayOriginal = randomArray(10);
+//classicSort($arrayOriginal);
+//bubbleSort($arrayOriginal);
+//bubbleSortAd($arrayOriginal);
+print_r(insertionSort($arrayOriginal));
 
 ?>
