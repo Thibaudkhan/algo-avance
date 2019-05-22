@@ -15,11 +15,9 @@ function puissance ($n, $nbPuissance){
     if ($nbPuissance>=1){
         return $n * puissance($n, $nbPuissanceInf );
     }
-    
     else if($nbPuissance == 0){
         return 1;
     }
-
     else {
         return $n;
     }
