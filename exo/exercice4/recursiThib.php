@@ -5,7 +5,6 @@ function puissance($nb,$nbPuissance){
 	if ($nbPuissance == 1) {
 		return $nb;
 	}else{
-		
 		return $nb * puissance($nb,$nbPuissance -1 );
 	}
 }
