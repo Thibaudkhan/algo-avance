@@ -8,8 +8,8 @@ function getNbDigit(int $nbToCut):int {
 }
 
 function powRec(int $nbToPow, int $pow):int{
-	if($pow == 1){
-		return $nbToPow;
+	if($pow == 0){
+		return 1;
 	}else{
 		return $nbToPow * powRec($nbToPow, $pow - 1);
 	}
