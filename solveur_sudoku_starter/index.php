@@ -3,12 +3,19 @@ require "./src/SudokuGrid.php";
 require_once 'src/SudokuSolver.php';
 
 $grid = SudokuGrid::loadFromFile("./grids/grid1.json");
+$nbIte = 0;
+if($grid->isFilled()){
+    echo "Filled \n";
+}
+else {
+    echo "Non filled";
+}
 $solver = SudokuSolver::solve($grid);
 if(null == $solver){
     echo "Insolvable \n";
 }
 else {
-    print_r($solver);
+    $grid = $solver;
 }
 
 //$grid = SudokuGrid::loadFromFile("./grids/full.json");
@@ -28,6 +35,6 @@ for ($i=0; $i < 9 ; $i++) {
 	}
 }
 echo "-------------------------------  \n";
-$nbIte = 0;
-print_r(SudokuSolver::solve($grid,$nbIte));
+//$nbIte = 0;
+//print_r(SudokuSolver::solve($grid,$nbIte));
 		

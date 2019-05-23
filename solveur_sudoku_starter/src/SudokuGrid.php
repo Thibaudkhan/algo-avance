@@ -54,15 +54,17 @@ class SudokuGrid //implements GridInterface
     }
 
     function isFilled(){
-        $board = $this->board;
+        $nbTrue;
         for ($i=0; $i < 9; $i++) {
-            $square = $board[$i]->getSquare();
-            if (in_array(0,$square)){
-                return false;
-            }else{
-                return true;
+            $square = $this->getSquareBoard($i)->getSquare();
+            if (!in_array(0,$square)){
+                $nbTrue ++;
             }
         }
+        if($nbTrue == 9){
+            return true;
+        }
+        return false;
     }
     
     public function getBoard(){
