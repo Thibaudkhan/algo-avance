@@ -21,7 +21,7 @@ class SudokuSolver //implements SolverInterface
                         echo"getCell \n";
                         $newGrid = new SudokuGrid(turnGridInArrayOfArray($grid));
                         $newGrid->setCell($i,$j,$x);
-                        echo "NewGrid \n";
+                        //echo "NewGrid \n";
                         if($newGrid->verify(
                             $newGrid->getColumn($j)) 
                             && $newGrid->verify(

@@ -1,8 +1,17 @@
 <?php
 require "./src/SudokuGrid.php";
-require "./src/SudokuSolver.php";
+require_once 'src/SudokuSolver.php';
 
-$grid = SudokuGrid::loadFromFile("./grids/full.json");
+$grid = SudokuGrid::loadFromFile("./grids/grid1.json");
+$solver = SudokuSolver::solve($grid);
+if(null == $solver){
+    echo "Insolvable \n";
+}
+else {
+    print_r($solver);
+}
+
+//$grid = SudokuGrid::loadFromFile("./grids/full.json");
 //print_r($grid->getColumn(0));
 //print_r($grid->getColumn(8));
 
