@@ -10,17 +10,10 @@
  		$b,
  		$c
  	);
-	/*for ($square=0; $square < 9; $square++) { 
-		for ($case=0; $case < 9 ; $case++) { 
-			array_push($row, random_int(0,8));
-		}
-		echo "\n";
-	}*/
-
 	print_r($row);
 	for ($i=0; $i <= 2 ; $i++) { 
 		if (in_array(0,$array[$i]) ) {
-		echo "oui $i \n";
+		echo "oui $i  \n".$array[1][1];
 		//return false;
 		}else{
 			echo "non $i \n";
