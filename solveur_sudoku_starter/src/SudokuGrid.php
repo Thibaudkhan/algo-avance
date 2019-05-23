@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 class SudokuGrid { // implements GridInterface
     function createSudokuGrid(array $grid): array {
         private $arrayOfArrays[] = array();
@@ -23,7 +22,6 @@ class SudokuGrid { // implements GridInterface
 // 9 tableaux (9 lignes) contenants chacuns 9 éléments (chiffres)
 // Récupérer 3 tableaux pour les découper en 3 carrés
 // Les carrés devront contenir chacuns 3 lignes contenant chacunes 3 éléments (chiffres)
-=======
 class SudokuGrid //implements GridInterface
 {
 
@@ -43,4 +41,3 @@ function arrayToArrays(array $bigArray) : array{
 foreach (jsonToArrays("../grids/full.json") as $array) {
  	print_r(arrayToArrays($array));
  } 
->>>>>>> master
