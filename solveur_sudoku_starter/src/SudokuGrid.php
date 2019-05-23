@@ -6,7 +6,7 @@ class SudokuGrid //implements GridInterface
 	private $board;
 	
 	public function __construct(array $array){
-		for ($i=0; $i < 8; $i++) { 
+		for ($i=0; $i < 9; $i++) { 
 		 	$this->board[$i] = new SudokuSquare(array_chunk($array[$i], 3));
 		 }
 	}
@@ -32,6 +32,37 @@ class SudokuGrid //implements GridInterface
 	    }
         $grid = new SudokuGrid($arrayOfArrays);
 		return $grid;
+    }
+
+    public function verify($arrayToTest):bool{
+        $arrayToTest;
+        for ($i=1; $i < 10; $i++) { 
+            $nbOcurrence = 0;
+            foreach ($arrayToTest as $key => $value) {
+                if ($value > 9 || $value < 1){
+                    return false;
+                }
+                if ($i === $value){
+                    $nbOcurrence++;
+                }
+            }
+            if($nbOcurrence > 1){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function isFilled(){
+        $board = $this->board;
+        for ($i=0; $i < 9; $i++) {
+            $square = $board[$i]->getSquare();
+            if (in_array(0,$square)){
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
     
     public function getBoard(){
@@ -82,5 +113,6 @@ class SudokuGrid //implements GridInterface
     	}
     	return $rowValue;
     }
+
 }
  
