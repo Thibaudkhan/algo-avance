@@ -4,7 +4,7 @@ require "./src/SudokuGrid.php";
 
 $grid = SudokuGrid::loadFromFile("./grids/full.json");
 //print_r($grid->getColumn(0));
-print_r($grid->getColumn(8));
+//print_r($grid->getColumn(8));
 
 echo "-------------------------------  \n";
 for ($i=0; $i < 9 ; $i++) { 
