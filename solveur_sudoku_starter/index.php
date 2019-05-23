@@ -1,6 +1,6 @@
 <?php
 require "./src/SudokuGrid.php";
-
+require "./src/SudokuSolver.php";
 
 $grid = SudokuGrid::loadFromFile("./grids/full.json");
 //print_r($grid->getColumn(0));
@@ -19,3 +19,6 @@ for ($i=0; $i < 9 ; $i++) {
 	}
 }
 echo "-------------------------------  \n";
+$nbIte = 0;
+print_r(SudokuSolver::solve($grid,$nbIte));
+		
