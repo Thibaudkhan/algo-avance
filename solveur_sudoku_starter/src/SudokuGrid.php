@@ -3,9 +3,8 @@ require "SudokuSquare.php";
 
 class SudokuGrid //implements GridInterface
 {
-	public $board;
+	private $board;
 	
-
 	public function __construct(array $array){
 		for ($i=0; $i < 8; $i++) { 
 		 	$this->board[$i] = new SudokuSquare(array_chunk($array[$i], 3));
@@ -35,10 +34,17 @@ class SudokuGrid //implements GridInterface
 	        }
 	    }
 
-		$grid = new SudokuGrid($arrayOfArrays);
+        $grid = new SudokuGrid($arrayOfArrays);
 		return $grid;
-	}
+    }
+    
+    public function getBoard(){
+        return $this->board;
+    }
+
+    public function getSquareBoard(int $nb){
+        return $this->board[$nb];
+    }
+
 }
  
-//Test lecture Json + découpage tableau (Anthony)
-print_r(SudokuGrid::loadFromFile("../grids/full.json"));
