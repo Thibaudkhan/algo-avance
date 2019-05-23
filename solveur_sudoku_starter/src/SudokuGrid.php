@@ -6,7 +6,7 @@ class SudokuGrid //implements GridInterface
 	private $board;
 	
 	public function __construct(array $array){
-		for ($i=0; $i < 8; $i++) { 
+		for ($i=0; $i < 9; $i++) { 
 		 	$this->board[$i] = new SudokuSquare(array_chunk($array[$i], 3));
 		 }
 	}
