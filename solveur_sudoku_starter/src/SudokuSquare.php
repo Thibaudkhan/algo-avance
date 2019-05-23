@@ -34,8 +34,8 @@ class SudokuSquare
     }
 
     public function getCellSquare(int $rowCell, int $colCell): int{
-        $arraySquare = $this->arraySquare;
-        $nbInCell = $arraySquare[$rowCell][$colCell];
+        //$arraySquare = $this->arraySquare;
+        $nbInCell = $this->arraySquare[$rowCell][$colCell];
         return $nbInCell;
     }
 

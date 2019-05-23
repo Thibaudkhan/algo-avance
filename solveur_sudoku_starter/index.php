@@ -1,52 +1,21 @@
 <?php
-
-require_once 'src/SudokuSolver.php';
-
-$solver = SudokuSolver::solve($grid);
-if(null == $solver){
-    echo "Insolvable";
-}
-else {
-    print_r($solver);
-}
+require "./src/SudokuGrid.php";
 
 
+$grid = SudokuGrid::loadFromFile("./grids/full.json");
+//print_r($grid->getColumn(0));
+print_r($grid->getColumn(8));
 
-/*;
-print_r($grid->getColumn(3));
-$array = $grid->getRow(3);
-$arraySquare = $grid->getSquareBoard(3)->getSquare();
-print_r($arraySquare);
-if($grid->verify($arraySquare)){
-    echo "Valide";
+echo "-------------------------------  \n";
+for ($i=0; $i < 9 ; $i++) { 
+	for ($j=0; $j < 9; $j++) { 
+	echo $grid->getCell($i,$j)."  ";
+		if ($j == 2 || $j == 5 ) {
+		echo " | ";
+		}
+	}echo "\n";
+	if($i == 2 || $i == 5 ){
+		echo "-------------------------------  \n";
+	}
 }
-else {
-    echo "Non valide";
-}
-print_r($array);
-if($grid->verify($array)){
-    echo "Valide";
-}
-else {
-    echo "Non valide";
-}
-if($grid->isFilled()){
-   echo "C'est plein";
-}
-else{
-    echo "C'est pos plein";
-}
-
-//print_r($grid->$board);
-print_r($square->getSquare());
-//print_r($square->setCellSquare(1,2, 15));
-//print_r($square->getRowSquare(1));
-//print_r($square->getColumnSquare(1));
-//print_r($square->getCellSquare(1,2));
-//print_r($square->getSquare());
-if($square->verifySquare()){
-    echo "Il est bon";
-}
-else {
-    echo "Pas bon";
-}*/
+echo "-------------------------------  \n";

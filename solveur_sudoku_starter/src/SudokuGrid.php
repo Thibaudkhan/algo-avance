@@ -75,8 +75,8 @@ class SudokuGrid //implements GridInterface
 
     public function getCell(int $row, int $column) :int{
     	$rowSquare = intdiv($row, 3);
-    	$columnSquare = intdiv($row,3);
-    	return $this->board[$this->getSquareId($row,$column)]->getCellSquare($row%3,$column%3);
+    	$columnSquare = intdiv($column,3);
+    	return $this->board[$this->getSquareId($rowSquare,$columnSquare)]->getCellSquare($row%3,$column%3);
     }
 
     public function setCell(int $row, int $column, int $value){
@@ -94,9 +94,10 @@ class SudokuGrid //implements GridInterface
     	$columnValue = array();
     	for ($i=0; $i < 3; $i++) { 
     		$arraySquare = $this->board[$idSquare + ($i * 3)]->getColumnSquare($columnSquare);
+    		//print_r($idSquare + ($i * 3));
     		foreach ($arraySquare as $value) {
     			array_push($columnValue, $value);
-       		}
+       		}//print_r($arraySquare);
     	}
     	return $columnValue;
     }
@@ -114,5 +115,6 @@ class SudokuGrid //implements GridInterface
     	return $rowValue;
     }
 
+    
 }
  
