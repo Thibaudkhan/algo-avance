@@ -69,5 +69,18 @@ class SudokuGrid //implements GridInterface
     	}
     	return $columnValue;
     }
+
+    public function getRow(int $rowIndex):array{
+    	$rowSquare = $rowIndex%3;
+    	$idSquare = intdiv($rowIndex, 3);
+    	$rowValue = array();
+    	for ($i=0; $i < 3; $i++) { 
+    		$arraySquare = $this->board[($idSquare * 3)+$i]->getRowSquare($rowSquare);
+    		foreach ($arraySquare as $value) {
+    			array_push($rowValue, $value);
+       		}
+    	}
+    	return $rowValue;
+    }
 }
  
