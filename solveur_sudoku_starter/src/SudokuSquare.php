@@ -33,6 +33,16 @@ class SudokuSquare
         return $tempArray;
     }
 
+    public function getCellSquare(int $rowCell, int $colCell): int{
+        $arraySquare = $this->arraySquare;
+        $nbInCell = $arraySquare[$rowCell][$colCell];
+        return $nbInCell;
+    }
+
+    public function setCellSquare(int $rowCell, int $colCell, int $replacement){
+        $this->arraySquare[$rowCell][$colCell] = $replacement;
+    }
+
     public function verifySquare():bool{
 
     }
