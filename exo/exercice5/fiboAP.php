@@ -15,18 +15,13 @@ print_r(fibonacci(10));
 
 echo "\n";
 // B
-$arrayValeur = array();
+$arrayValeur = array(0 => 1, 1 => 1);
 
-function fibonacciAd(int $nbIteration, &$arrayValeur):int{
-    if($nbIteration > 1){
-        if(!array_key_exists($nbIteration, $arrayValeur)){
-            $arrayValeur[$nbIteration] = fibonacci($nbIteration - 1, $nbMemory) + fibonacci($nbIteration - 2, $nbMemory); 
-        }  
-        return $arrayValeur[$nbIteration]; 
-    }
-    else {
-        return $nbIteration;
-    }
+function fibonacciAd(int $nbIteration, array &$arrayValeur):float{
+    if(!array_key_exists($nbIteration, $arrayValeur)){
+        $arrayValeur[$nbIteration] = fibonacciAd($nbIteration - 1, $arrayValeur) + fibonacciAd($nbIteration - 2, $arrayValeur); 
+    }  
+    return $arrayValeur[$nbIteration]; 
 }
 
-print_r(fibonacciAd(40, $arrayValeur));
+print_r(fibonacciAd(5, $arrayValeur));
