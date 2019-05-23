@@ -1,4 +1,5 @@
 <?php
+require "SudokuSquare.php";
 
 class SudokuGrid //implements GridInterface
 {
@@ -6,8 +7,9 @@ class SudokuGrid //implements GridInterface
 	
 
 	public function __construct(array $array){
-		$this->board = $array;
-
+		for ($i=0; $i < 8; $i++) { 
+		 	$this->board[$i] = new SudokuSquare(array_chunk($array[$i], 3));
+		 }
 	}
 
 	public static function loadFromFile(string $filepath): SudokuGrid{
