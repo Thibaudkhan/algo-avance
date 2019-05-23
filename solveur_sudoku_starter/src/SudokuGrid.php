@@ -1,5 +1,5 @@
 <?php
-require "SudokuSquare.php";
+require_once "SudokuSquare.php";
 
 class SudokuGrid //implements GridInterface
 {
@@ -39,7 +39,7 @@ class SudokuGrid //implements GridInterface
         for ($i=1; $i < 10; $i++) { 
             $nbOcurrence = 0;
             foreach ($arrayToTest as $key => $value) {
-                if ($value > 9 || $value < 1){
+                if ($value > 9 || $value < 0){
                     return false;
                 }
                 if ($i === $value){
