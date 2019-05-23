@@ -44,8 +44,8 @@ class SudokuGrid //implements GridInterface
 
     public function getCell(int $row, int $column) :int{
     	$rowSquare = intdiv($row, 3);
-    	$columnSquare = intdiv($row,3);
-    	return $this->board[$this->getSquareId($row,$column)]->getCellSquare($row%3,$column%3);
+    	$columnSquare = intdiv($column,3);
+    	return $this->board[$this->getSquareId($rowSquare,$columnSquare)]->getCellSquare($row%3,$column%3);
     }
 
     public function setCell(int $row, int $column, int $value){
