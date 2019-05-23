@@ -12,16 +12,13 @@ class SudokuGrid //implements GridInterface
 	}
 
 	public static function loadFromFile(string $filepath): SudokuGrid{
-
-		$arrayOfArrays = array();
-
+		$arrayOfArrays = array(); 
     	for ($i=0; $i < 9; $i++) { 
     		 $arrayOfArrays[$i] = array();
    		}
 		$stream = fopen($filepath, "r");
 		$jsonString = fread($stream, filesize($filepath));
 		$jsonArray = json_decode($jsonString);
-
 	    for ($i = 0; $i <= 8; $i ++) {
 	        for ($j = 0; $j <= 8; $j ++) {
 	            if ($j <= 2) {
@@ -33,7 +30,6 @@ class SudokuGrid //implements GridInterface
 	            }
 	        }
 	    }
-
         $grid = new SudokuGrid($arrayOfArrays);
 		return $grid;
     }
@@ -46,5 +42,24 @@ class SudokuGrid //implements GridInterface
         return $this->board[$nb];
     }
 
+    public function getCell(int $row, int $column) :int{
+    	$rowSquare = intdiv($row, 3);
+    	$columnSquare = intdiv($row,3);
+    	return $this->board[$this->getSquareId($row,$column)]->getCellSquare($row%3,$column%3);
+    }
+
+    public function setCell(int $row, int $column, int $value){
+    	$rowSquare = intdiv($row, 3);
+    	$columnSquare = intdiv($column,3);
+    	$this->board[$this->getSquareId($row,$column)]->setCellSquare($row%3,$column%3,$value);
+    }
+    public function getSquareId(int $row, int $column) : int{
+    	return 3*$row + $column;
+    }
+
+    public function getColumn(int $columnIndex):array{
+    	$columnSquare = $columnIndex%3;
+    	$idSquare = intdiv($columnIndex, 3);
+    }
 }
  
