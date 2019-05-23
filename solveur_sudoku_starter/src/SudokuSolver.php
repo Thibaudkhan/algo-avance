@@ -8,15 +8,16 @@ for ($m=0; $m < count($grid->getBoard()); $m++) {
 }*/
 class SudokuSolver //implements SolverInterface
 {
-    public static function solve(SudokuGrid $grid,int &$nbIte): ?SudokuGrid{
+public static function solve(SudokuGrid $grid): ?SudokuGrid{
         if($grid->isFilled()){
-                                echo "Complete \n";
-                                return $grid;
-                            }
+            echo "Complete \n";
+            return $grid;
+        }
         for ($i=0; $i < count($grid->getBoard())-1; $i++) { 
-            for ($j=0; $j < count($grid->getSquareBoard($i)->getSquare())-1; $j++) { 
+            for ($j=0; $j < count($grid->getSquareBoard($i)->getSquare())-1; $j++) {
                 echo "Parcours du tableau \n";
-                if($grid->getCell($i,$j) == 0){
+                if($grid->getCell($i,$j) === 0){
+                    echo $grid->getCell($i,$j);
                     for ($x=1; $x < 10; $x++) { 
                         echo"getCell \n";
                         $newGrid = new SudokuGrid(turnGridInArrayOfArray($grid));
@@ -30,9 +31,9 @@ class SudokuSolver //implements SolverInterface
                                 $newGrid->getSquareBoard($newGrid->getSquareId(intdiv($i, 3), intdiv($j, 3)))->getSquare())
                         ){
                             echo "Verified \n";
-                            
+                            echo $i.$j.$x;
                             echo "\n".$nbIte++."\n";
-                            SudokuSolver::solve($newGrid,$nbIte);
+                            return SudokuSolver::solve($newGrid,$i, $j);
                         }
                     }
                 }       
