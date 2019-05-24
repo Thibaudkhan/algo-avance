@@ -13,27 +13,28 @@ public static function solve(SudokuGrid $grid): ?SudokuGrid{
             echo "Complete \n";
             return $grid;
         }
-        for ($i=0; $i < count($grid->getBoard())-1; $i++) { 
-            for ($j=0; $j < count($grid->getSquareBoard($i)->getSquare())-1; $j++) {
-                echo "Parcours du tableau \n";
-                if($grid->getCell($i,$j) === 0){
-                    echo $grid->getCell($i,$j);
+        for ($i=0; $i < count($grid->getBoard()); $i++) { 
+            for ($j=0; $j < count($grid->getSquareBoard($i)->getSquare()); $j++) {
+                //echo "Parcours du tableau \n";
+                if($grid->getCell($i,$j) == 0){
+                    //echo $grid->getCell($i,$j);
                     for ($x=1; $x < 10; $x++) { 
-                        echo"getCell \n";
-                        $newGrid = new SudokuGrid(turnGridInArrayOfArray($grid));
+                        //echo $i.$j.$x;
+                        //echo"getCell \n";
+                        $newGrid = new SudokuGrid(self::turnGridInArrayOfArray($grid));
                         $newGrid->setCell($i,$j,$x);
                         //echo "NewGrid \n";
-                        if($newGrid->verify(
-                            $newGrid->getColumn($j)) 
+                        //echo 'Column '.print_r($newGrid->getColumn($j));
+                        //echo 'Row '.print_r($newGrid->getRow($i));
+                        //echo 'Square '.print_r($newGrid->getSquareBoard($newGrid->getSquareId(intdiv($i, 3), intdiv($j, 3)))->getSquare());
+                        if( $newGrid->verify($newGrid->getRow($i))
+                            && $newGrid->verify($newGrid->getColumn($j)) 
                             && $newGrid->verify(
-                                $newGrid->getRow($i)) 
-                            && $newGrid->verify(
-                                $newGrid->getSquareBoard($newGrid->getSquareId(intdiv($i, 3), intdiv($j, 3)))->getSquare())
+                                $newGrid->getSquareBoard($newGrid->getSquareId(intdiv($i,3),intdiv($j,3)))->getSquare())
                         ){
-                            echo "Verified \n";
-                            echo $i.$j.$x;
-                            echo "\n".$nbIte++."\n";
-                            return SudokuSolver::solve($newGrid,$i, $j);
+                            //echo "Verified \n";
+                            //echo $i.$j.$x;
+                            return self::solve($newGrid);
                         }
                     }
                 }       
@@ -41,17 +42,16 @@ public static function solve(SudokuGrid $grid): ?SudokuGrid{
         }
         return null;
     }
-}
-
-function turnGridInArrayOfArray(SudokuGrid $grid):array{
-    $arrayOfArray = array();
-    for ($i=0; $i < 9; $i++) { 
-        //array_push($arrayOfArray, $grid->getSquareBoard($i)->getSquare());
-        $arrayOfArray[$i] = array();
-        $arraySquare = array();
-        foreach ($grid->getSquareBoard($i)->getSquare() as $value) {
-            array_push($arrayOfArray[$i], $value);
+    public static function turnGridInArrayOfArray(SudokuGrid $grid):array{
+        $arrayOfArray = array();
+        for ($i=0; $i < 9; $i++) { 
+            //array_push($arrayOfArray, $grid->getSquareBoard($i)->getSquare());
+            $arrayOfArray[$i] = array();
+            $arraySquare = array();
+            foreach ($grid->getSquareBoard($i)->getSquare() as $value) {
+                array_push($arrayOfArray[$i], $value);
+            }
         }
+        return $arrayOfArray;
     }
-    return $arrayOfArray;
 }

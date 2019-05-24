@@ -35,14 +35,13 @@ class SudokuGrid //implements GridInterface
     }
 
     public function verify($arrayToTest):bool{
-        $arrayToTest;
         for ($i=1; $i < 10; $i++) { 
             $nbOcurrence = 0;
             foreach ($arrayToTest as $key => $value) {
                 if ($value > 9 || $value < 0){
                     return false;
                 }
-                if ($i === $value){
+                if ($i == $value){
                     $nbOcurrence++;
                 }
             }
@@ -86,6 +85,7 @@ class SudokuGrid //implements GridInterface
     	$columnSquare = intdiv($column,3);
     	$this->getSquareBoard($this->getSquareId($rowSquare,$columnSquare))->setCellSquare($row%3,$column%3,$value);
     }
+
     public function getSquareId(int $row, int $column) : int{
     	return 3*$row + $column;
     }
