@@ -16,12 +16,15 @@ if($grid->isFilled()){
 else {
     echo "Non filled";
 }*/
-$solver = SudokuSolver::solve($grid);
-$solver1 = SudokuSolver::solve($grid1);
-$solver2 = SudokuSolver::solve($grid2);
-$solver3 = SudokuSolver::solve($grid3);
-$solver4 = SudokuSolver::solve($grid4);
-$solver5 = SudokuSolver::solve($grid5);
+$coords = array();
+array_push($coords, 0);
+array_push($coords, 0);
+$solver = SudokuSolver::solve($grid,$coords);
+$solver1 = SudokuSolver::solve($grid1,$coords);
+$solver2 = SudokuSolver::solve($grid2,$coords);
+$solver3 = SudokuSolver::solve($grid3,$coords);
+$solver4 = SudokuSolver::solve($grid4,$coords);
+$solver5 = SudokuSolver::solve($grid5,$coords);
 if(null == $solver){
     echo "Insolvable \n";
 }

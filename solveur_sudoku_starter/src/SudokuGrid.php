@@ -127,6 +127,7 @@ class SudokuGrid //implements GridInterface
     		}
     	}
     	return $coords;
+    }
 
     
 }
