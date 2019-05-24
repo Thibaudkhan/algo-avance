@@ -118,14 +118,19 @@ class SudokuGrid //implements GridInterface
     }
 
     public function getNextCell(array $coords){
+    	//print_r($coords);
+    	//echo "\n ->";
     	$coords[1]++;
     	if($coords[1] > 8){
     		$coords[1] = 0;
     		$coords[0]++;
-    		if($coords[0]>8){
-    			$coords[0];
-    		}
     	}
+    	if($coords[0] > 8){
+			$coords[0];
+		}
+		
+		//print_r($coords);
+		//echo "\n";
     	return $coords;
     }
 

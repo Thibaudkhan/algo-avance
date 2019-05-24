@@ -2,12 +2,12 @@
 require "./src/SudokuGrid.php";
 require_once 'src/SudokuSolver.php';
 
-$grid1 = SudokuGrid::loadFromFile("./grids/grid1.json");
-$grid2 = SudokuGrid::loadFromFile("./grids/grid2.json");
-$grid3 = SudokuGrid::loadFromFile("./grids/grid3.json");
-$grid4 = SudokuGrid::loadFromFile("./grids/grid4.json");
-$grid5 = SudokuGrid::loadFromFile("./grids/grid5.json");
-$grid = SudokuGrid::loadFromFile("./grids/full.json");
+//$grid1 = SudokuGrid::loadFromFile("./grids/grid1.json");
+//$grid2 = SudokuGrid::loadFromFile("./grids/grid2.json");
+//$grid3 = SudokuGrid::loadFromFile("./grids/grid3.json");
+//$grid4 = SudokuGrid::loadFromFile("./grids/grid4.json");
+//$grid5 = SudokuGrid::loadFromFile("./grids/grid5.json");
+$grid = SudokuGrid::loadFromFile("./grids/grid3.json");
 
 /*$nbIte = 0;
 if($grid->isFilled()){
@@ -16,22 +16,38 @@ if($grid->isFilled()){
 else {
     echo "Non filled";
 }*/
+$nbCall = 0;
 $coords = array();
 array_push($coords, 0);
 array_push($coords, 0);
-$solver = SudokuSolver::solve($grid,$coords);
-$solver1 = SudokuSolver::solve($grid1,$coords);
-$solver2 = SudokuSolver::solve($grid2,$coords);
-$solver3 = SudokuSolver::solve($grid3,$coords);
-$solver4 = SudokuSolver::solve($grid4,$coords);
-$solver5 = SudokuSolver::solve($grid5,$coords);
+$solver = SudokuSolver::solve($grid,$coords,$nbCall);
+/*$nbCall = 0;
+$coords[0] = 0;
+$coords[1] = 0;
+$solver1 = SudokuSolver::solve($grid1,$coords,$nbCall);
+$nbCall = 0;
+$coords[0] = 0;
+$coords[1] = 0;
+$solver2 = SudokuSolver::solve($grid2,$coords,$nbCall);
+$nbCall = 0;
+$coords[0] = 0;
+$coords[1] = 0;
+$solver3 = SudokuSolver::solve($grid3,$coords,$nbCall);
+$nbCall = 0;
+$coords[0] = 0;
+$coords[1] = 0;
+$solver4 = SudokuSolver::solve($grid4,$coords,$nbCall);
+$nbCall = 0;
+$coords[0] = 0;
+$coords[1] = 0;
+$solver5 = SudokuSolver::solve($grid5,$coords,$nbCall);*/
 if(null == $solver){
     echo "Insolvable \n";
 }
 else {
     display($solver);
 }
-if(null == $solver1){
+/*if(null == $solver1){
     echo "Insolvable \n";
 }
 else {
@@ -60,7 +76,7 @@ if(null == $solver5){
 }
 else {
     display($solver5);
-}
+}*/
 
 //$grid = SudokuGrid::loadFromFile("./grids/full.json");
 //print_r($grid->getColumn(0));
