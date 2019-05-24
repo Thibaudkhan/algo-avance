@@ -1,5 +1,5 @@
 <?php
-require "SudokuSquare.php";
+require_once "SudokuSquare.php";
 
 class SudokuGrid //implements GridInterface
 {
@@ -35,14 +35,13 @@ class SudokuGrid //implements GridInterface
     }
 
     public function verify($arrayToTest):bool{
-        $arrayToTest;
         for ($i=1; $i < 10; $i++) { 
             $nbOcurrence = 0;
             foreach ($arrayToTest as $key => $value) {
-                if ($value > 9 || $value < 1){
+                if ($value > 9 || $value < 0){
                     return false;
                 }
-                if ($i === $value){
+                if ($i == $value){
                     $nbOcurrence++;
                 }
             }
@@ -54,15 +53,17 @@ class SudokuGrid //implements GridInterface
     }
 
     function isFilled(){
-        $board = $this->board;
+        $nbTrue;
         for ($i=0; $i < 9; $i++) {
-            $square = $board[$i]->getSquare();
-            if (in_array(0,$square)){
-                return false;
-            }else{
-                return true;
+            $square = $this->getSquareBoard($i)->getSquare();
+            if (!in_array(0,$square)){
+                $nbTrue ++;
             }
         }
+        if($nbTrue == 9){
+            return true;
+        }
+        return false;
     }
     
     public function getBoard(){
@@ -82,8 +83,9 @@ class SudokuGrid //implements GridInterface
     public function setCell(int $row, int $column, int $value){
     	$rowSquare = intdiv($row, 3);
     	$columnSquare = intdiv($column,3);
-    	$this->board[$this->getSquareId($row,$column)]->setCellSquare($row%3,$column%3,$value);
+    	$this->getSquareBoard($this->getSquareId($rowSquare,$columnSquare))->setCellSquare($row%3,$column%3,$value);
     }
+
     public function getSquareId(int $row, int $column) : int{
     	return 3*$row + $column;
     }
